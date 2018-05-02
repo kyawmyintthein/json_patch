@@ -287,7 +287,6 @@ func getNewReflectValueSliceWithPayloadValues(structFieldValue reflect.Value, iP
     k := structFieldType.Elem().Kind()
     switch k {
     case reflect.Struct:
-        arrayItemAsStruct := reflect.Indirect(reflect.New(structFieldType.Elem()))
         for index, ival := range interfaceSlice {
             nestedPayload, ok := ival.(map[string]interface{})
             if !ok {
@@ -295,6 +294,7 @@ func getNewReflectValueSliceWithPayloadValues(structFieldValue reflect.Value, iP
                 return
             }
 
+            arrayItemAsStruct := reflect.Indirect(reflect.New(structFieldType.Elem()))
             err = traverseStructAndMergeStructFieldsWithPayload(arrayItemAsStruct, nestedPayload)
             if err != nil {
                 return
@@ -326,7 +326,6 @@ func getNewReflectValueSliceWithPayloadValues(structFieldValue reflect.Value, iP
             sliceReflectValue.Index(index).Set(reflect.ValueOf(nestedPayload).Convert(structFieldType.Elem()))
         }
     case reflect.Slice:
-        arrayItemAsSlice := reflect.Indirect(reflect.New(structFieldType.Elem()))
         for index, ival := range interfaceSlice {
             slicePayload, ok := ival.([]interface{})
             if !ok {
@@ -334,6 +333,7 @@ func getNewReflectValueSliceWithPayloadValues(structFieldValue reflect.Value, iP
                 return
             }
 
+            arrayItemAsSlice := reflect.Indirect(reflect.New(structFieldType.Elem()))
             // WARN: recursion below.
             nestedSliceRefletValue, err := getNewReflectValueSliceWithPayloadValues(arrayItemAsSlice, slicePayload)
             if err != nil {
