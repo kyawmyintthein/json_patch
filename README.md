@@ -22,7 +22,7 @@ type User struct {
   
 func main() {  
    user := User{Name: "Richard", Email: "contact@richard.com"}  
-   src := []byte(`{"name": "John", "email": "contact@richard.com"}`)  
+   src := []byte(`{"name": "John"}`)  
    fmt.Printf("Before Patch : %+v \n", user)  
    
    err := jsonpatch.PatchValues(src, &user)  
