@@ -22,7 +22,7 @@ type User struct {
   
 func main() {  
    user := User{Name: "Richard", Email: "contact@richard.com"}  
-   src := []byte(`{"name": "John", "email": "contact@john.com"}`)  
+   src := []byte(`{"name": "John", "email": "contact@richard.com"}`)  
    fmt.Printf("Before Patch : %+v \n", user)  
    
    err := jsonpatch.PatchValues(src, &user)  
@@ -37,6 +37,6 @@ func main() {
 
 > Before Patch : {Name:Richard Email:contact@richard.com} 
 
-> After Patch : {Name:John Email:contact@john.com}
+> After Patch : {Name:John Email:contact@richard.com}
 
 
