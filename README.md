@@ -3,14 +3,7 @@
 # JSONPATCH
 
 **Description**
- > Merging json to existing struct
- > Support for
-         - nested struct 
-         - Slice
-         - Interface
-         - primitive type except Ptr and Complex number
-         - Map
-         
+ > Merging json to existing struct. Support for nested struct, Slice, Interface, primitive type except Ptr and Complex number and Map.         
 
 
 **Example**
