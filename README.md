@@ -42,6 +42,7 @@ func main() {
 **Result**
 
 > Before Patch : {Name:Richard Email:contact@richard.com} 
+
 > After Patch : {Name:John Email:contact@john.com}
 
 
